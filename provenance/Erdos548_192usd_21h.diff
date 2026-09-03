@@ -1,0 +1,17 @@
+--- astra-resolutions/Erdos548_192usd_21h.lean
++++ Erdos548/Resolutions/Erdos548_192usd_21h.lean
+@@ -1,4 +1,4 @@
+-import FormalConjecturesUtil
++import Mathlib
+ 
+ /-!
+ # Erdős Problem 548
+@@ -598,7 +598,7 @@
+     | .inr _, .inl b => b = r
+     | .inr _, .inr _ => False
+   symm := by rintro (a | a) (b | b) h <;> first | exact h.symm | exact h
+-  loopless := by rintro (a | a) <;> simp
++  loopless := by constructor; rintro (a | a) <;> simp
+ 
+ end Erdos548
+ 

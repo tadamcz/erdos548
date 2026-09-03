@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4 (mathlib-initiative format, Palomar registry rules).
+version: v0.4
+project:
+  name: 'Erdős problem #548 (Erdős–Sós conjecture): proof'
+  description: 'Proof of Erdős problem #548 in Lean 4 with Mathlib. The conjecture is true. Formally, the theorem
+    proved is `Erdos548.erdos_548`, the statement of the FrontierMath Erdős benchmark: for all `n, k` with `k +
+    1 ≤ n`, every `G : SimpleGraph (Fin n)` with `(k-1)/2 · n + 1 ≤ |E(G)|` (as rationals) contains every tree `T
+    : SimpleGraph (Fin (k+1))` as a (not necessarily induced) subgraph, `T.IsContained G`. The proof was produced
+    autonomously by a pre-release version of GPT-6 Astra (OpenAI) in the FrontierMath Erdős benchmark of Epoch AI
+    and Thomas F. Bloom, in which AI systems must prove or disprove formal statements of open Erdős problems inside
+    a sandboxed Lean environment; the statement was taken from the benchmark''s own autoformalization and was open
+    as of August 2026. The repository contains 1 verified resolution of the statement (one is wired to Comparator);
+    the human contribution is limited to problem selection, statement review, running the harness and packaging.'
+  authors:
+  - Tom Adamczewski
+  license: Apache-2.0
+  responsible_maintainers:
+  - Tom Adamczewski
+classification:
+  arxiv:
+  - math.CO
+  msc2020:
+  - 05C35
+  - 05C05
+sources:
+- title: 'Proof of Erdős problem #548: Every graph on n ≥ k+1 vertices with at least (k−1)n/2 + 1 edges contains
+    every tree on k+1 vertices.'
+  type: original-proof
+  relationship: other
+  note: This formalization is the first presentation of the result. The Lean proof was found by a pre-release version
+    of GPT-6 Astra, working autonomously in the FrontierMath Erdős benchmark harness; no human wrote or steered
+    the proof. Novelty of the ideas relative to the literature has not been established; the resolution itself is
+    new (the problem was listed as open on erdosproblems.com as of August 2026).
+- title: 'Erdős problem #548 (erdosproblems.com)'
+  type: web discussion
+  contributors:
+  - name: Paul Erdős
+    role: problem proposer
+  - name: Vera T. Sós
+    role: problem proposer
+  - name: Thomas F. Bloom
+    role: curator of erdosproblems.com
+  id: https://www.erdosproblems.com/548
+  location: https://www.erdosproblems.com/548
+  relationship: background
+  note: Problem page with statement, history, references and (since the resolution) an informal exposition by Thomas
+    F. Bloom.
+- title: Extremal problems in graph theory
+  authors:
+  - Paul Erdős
+  type: paper
+  location: Theory of Graphs and its Applications (Proc. Sympos. Smolenice, 1963), Publ. House Czechoslovak Acad.
+    Sci., Prague, 1964, pp. 29–36
+  relationship: background
+  note: Early statement of the Erdős–Sós conjecture (source Er64c on erdosproblems.com).
+- title: FrontierMath Erdős
+  authors:
+  - Tom Adamczewski
+  - Thomas F. Bloom
+  type: paper
+  location: https://github.com/epoch-research/LeanOpenProblems
+  relationship: background
+  note: Manuscript (Epoch AI and University of Manchester, 2026) describing the benchmark of 68 open Erdős problems,
+    the agent harness, the verification protocol and the results; this resolution is reported in its Results section
+    and summarised in its appendix. The benchmark and Lean statements are at the given repository.
+related_formalizations:
+- id: https://github.com/epoch-research/LeanOpenProblems/blob/77882c437ca1dfefab3b27fa00f1d29788100311/apn/data/erdos_autoformalized/Isolated/Erdos548.erdos_548.lean
+  relationship: builds-on
+  note: The statement file given to the AI system in the FrontierMath Erdős benchmark. The problem had no statement
+    in Formal Conjectures; this statement was produced by Epoch AI's autoformalization pipeline and reviewed for
+    faithfulness by Thomas F. Bloom. The compared theorem is this statement, proved.
+status:
+  scope: 'Fully formalized: the compared theorem `Erdos548.erdos_548` in `Challenge.lean` is proved in `Solution.lean`
+    via the imported module `Erdos548.Resolutions.Erdos548_192usd_21h` with no `sorry` and no axioms beyond propext,
+    Quot.sound and Classical.choice. Only the conjectured statement is advertised; stronger quantitative bounds
+    visible inside the proofs are not part of the compared statement. Nothing about the informal problem was omitted
+    or weakened relative to the benchmark''s formal statement; see fidelity.divergences for the relation between
+    that formal statement and the informal problem.'
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+automation:
+  methods:
+  - method: autonomous
+    models:
+    - GPT-6 Astra (pre-release version, OpenAI)
+    framework: Inspect AI (UK AISI) with the LeanOpenProblems task harness; deepagent-based agent for default-configuration
+      attempts, basic ReAct agent for the larger-budget attempts
+    tool_setup: The model worked alone in a Docker container without network access, with bash, a text editor, a
+      resource-budget tool, a Lean 4 toolchain (v4.27.0) with Mathlib (via Formal Conjectures at commit 488aade228ec),
+      SageMath, Python (sympy, mpmath, numpy, pantograph) and, in the default configuration, subagents, persistent
+      memory, a todo list and an offline snapshot of about 476,000 pure-mathematics arXiv LaTeX sources (proof-pile,
+      up to 2022). Its submission was checked in a separate pristine container by Comparator (Lean FRO) against
+      the trusted statement, permitting only the three standard axioms.
+    cost:
+      wall_time: 21 hours of agent working time for the primary resolution (ReAct agent, larger budget, 26 Aug 2026)
+      spend_usd: 192 USD metered for the primary resolution at GPT-5.6 Sol per-token prices (the pre-release model's
+        prices were unpublished at the time); the FrontierMath Erdős paper recomputes costs at GPT-6 Astra's actual
+        prices, about 1.8–2.0 times higher
+      hardware: API-only inference; the agent's sandbox ran on Epoch AI's cloud evaluation infrastructure (Hawk)
+    prompting_notes: 'Fixed task prompt from the harness (apn/prompts.py in LeanOpenProblems): settle the conjecture
+      in Spec.lean by filling the `sorry` of either the statement or its `.disproof` negation without altering either
+      statement or the imports, using only the permitted axioms; a description of the available tools; and general
+      encouragement that open conjectures are not infeasible. No problem-specific hints or human interaction. Transcripts
+      are linked in the README.'
+  spend_usd: 192 USD metered across the 1 resolution attempt(s) included in this repository (see method notes for
+    the price basis); the paper reports over 220,000 USD of compute across all attempts on all 68 benchmark problems
+  notes: 'The Lean development was written entirely by the AI system inside the benchmark harness. Humans (Thomas
+    F. Bloom) selected the problem and reviewed the formal statement for faithfulness before the run; humans (Tom
+    Adamczewski) ran the harness and, after the run, packaged the verified output into this repository. The only
+    edits to the AI-written files are mechanical and are listed in the README: port to Mathlib v4.28.0: Mathlib
+    v4.28.0 changed the field `SimpleGraph.loopless` from `Irreflexive Adj` to the class `Std.Irrefl Adj`, so proofs
+    of that field need a `constructor` step (or an anonymous-constructor wrapper) and uses of `G.loopless` as a
+    function become `G.loopless.irrefl`. Changed lines:.'
+fidelity:
+  divergences: The compared theorem is the benchmark's formalisation of the erdosproblems.com phrasing ("at least
+    (k−1)n/2 + 1 edges", trees on k+1 vertices) rather than the classical phrasing ("more than (k−2)n/2 edges",
+    trees on k vertices). Writing `t = k + 1` for the tree order, the classical hypothesis is `|E| > (t-2)n/2` while
+    the compared hypothesis is `|E| ≥ (t-2)n/2 + 1`. These agree when `(t-2)n` is even; when `(t-2)n` is odd the
+    compared hypothesis is stronger by half an edge, so the advertised theorem is formally very slightly weaker
+    than the classical conjecture in that parity case. The Lean proof's internal counting lemma derives `2|E(G)|
+    ≤ (t-2)n` whenever the tree is absent, which is the sharp classical bound, but only the advertised statement
+    is compared. The vertex type is `Fin n`, which loses no generality; `G.edgeSet.ncard` is the number of edges;
+    `T.IsTree` and `T.IsContained G` are Mathlib's notions. The hypothesis `k + 1 ≤ n` matches `n ≥ k + 1`.
+review:
+  status: 'mechanically verified (Comparator: Lean kernel replay, standard axioms only) in the benchmark harness
+    and again in this repository''s CI; preliminary informal reading of the argument by Thomas F. Bloom; no independent
+    refereeing'
+  reviewers:
+  - Thomas F. Bloom
+  notes: 'Statement audit: the formal statement was selected and reviewed for faithfulness to the informal problem
+    by Thomas F. Bloom before the benchmark run (for Formal Conjectures statements he chose the representative statement;
+    autoformalized statements he checked individually). Mathematical review: the resolution was verified by Comparator
+    against the trusted statement; Thomas F. Bloom made an initial, informal examination of the argument and wrote
+    a short exposition (FrontierMath Erdős appendix and erdosproblems.com). The paper states that the proofs have
+    not yet been properly digested by human experts.'
+alignment:
+  namespace: Erdos548
+  statements:
+  - source: erdosproblems.com/548, as formalized for the FrontierMath Erdős benchmark
+    lean: Erdos548.erdos_548
+    module: Challenge
+    status: proved
+    note: The compared theorem is the formal conjecture itself. Its exact text is identical to the benchmark statement
+      (Comparator enforces this against the imported proof module).
+acknowledgements: Lean 4, Mathlib and the Lean FRO's Comparator; Google DeepMind's Formal Conjectures project for
+  the formal statements of the Erdős problems it covers; Thomas F. Bloom (erdosproblems.com) for problem selection,
+  statement review and the informal expositions; Epoch AI for running the benchmark; OpenAI for pre-release access
+  to GPT-6 Astra; the Palomar registry template for the repository layout.
