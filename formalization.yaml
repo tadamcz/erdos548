@@ -3,16 +3,9 @@
 version: v0.4
 project:
   name: 'Erdős problem #548 (Erdős–Sós conjecture): proof'
-  description: 'Proof of Erdős problem #548 in Lean 4 with Mathlib. The conjecture is true. Formally, the theorem
-    proved is `Erdos548.erdos_548`, the statement of the FrontierMath Erdős benchmark: for all `n, k` with `k +
-    1 ≤ n`, every `G : SimpleGraph (Fin n)` with `(k-1)/2 · n + 1 ≤ |E(G)|` (as rationals) contains every tree `T
-    : SimpleGraph (Fin (k+1))` as a (not necessarily induced) subgraph, `T.IsContained G`. The proof was produced
-    autonomously by a pre-release version of GPT-6 Astra (OpenAI) in the FrontierMath Erdős benchmark of Tom Adamczewski
-    and Thomas F. Bloom (2026), in which AI systems must prove or disprove formal statements of open Erdős problems
-    inside a sandboxed Lean environment; the statement was taken from the benchmark''s own autoformalization and
-    was open as of August 2026. The repository contains 1 verified resolution of the statement (one is wired to
-    Comparator); the human contribution is limited to problem selection, statement review, running the harness and
-    packaging.'
+  description: 'Proof of the Erdős–Sós conjecture (Erdős problem #548): every graph on n ≥ k+1 vertices with at
+    least (k−1)n/2 + 1 edges contains every tree on k+1 vertices. Found autonomously by GPT-6 Astra in the FrontierMath
+    Erdős benchmark (Adamczewski and Bloom, 2026).'
   authors:
   - name: Tom Adamczewski
     github: tadamcz
