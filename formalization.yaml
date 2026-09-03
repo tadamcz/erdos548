@@ -96,7 +96,7 @@ automation:
       up to 2022). Its submission was checked in a separate pristine container by Comparator (Lean FRO) against
       the trusted statement, permitting only the three standard axioms.
     cost:
-      wall_time: 20 hours of agent working time for the primary resolution (harness working_time, excluding API
+      wall_time: 20.0 hours of agent working time for the primary resolution (harness working_time, excluding API
         retry waits)
       spend_usd: 363 USD for the primary resolution, computed from its token counts at GPT-6 Astra's standard rates
         (USD 10 per million input tokens, 50 per million output tokens, 1 per million cache-read tokens and 12.50
