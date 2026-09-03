@@ -14,10 +14,14 @@ project:
     Comparator); the human contribution is limited to problem selection, statement review, running the harness and
     packaging.'
   authors:
-  - Tom Adamczewski
+  - name: Tom Adamczewski
+    github: tadamcz
+    orcid: https://orcid.org/0000-0001-6772-1185
   license: Apache-2.0
   responsible_maintainers:
-  - Tom Adamczewski
+  - name: Tom Adamczewski
+    github: tadamcz
+    orcid: https://orcid.org/0000-0001-6772-1185
 classification:
   arxiv:
   - math.CO
