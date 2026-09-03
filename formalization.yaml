@@ -98,12 +98,11 @@ automation:
       spend_usd: 363 USD for the primary resolution, computed from its token counts at GPT-6 Astra's standard rates
         (USD 10 per million input tokens, 50 per million output tokens, 1 per million cache-read tokens and 12.50
         per million cache-write tokens)
-      hardware: API-only inference; the agent's sandbox ran on Epoch AI's cloud evaluation infrastructure (Hawk)
+      hardware: API-only inference; the agent's sandbox ran on Epoch AI's cloud evaluation infrastructure
     prompting_notes: 'Fixed task prompt from the harness (apn/prompts.py in LeanOpenProblems): settle the conjecture
       in Spec.lean by filling the `sorry` of either the statement or its `.disproof` negation without altering either
       statement or the imports, using only the permitted axioms; a description of the available tools; and general
-      encouragement that open conjectures are not infeasible. No problem-specific hints or human interaction. Transcripts
-      are linked in the README.'
+      encouragement that open conjectures are not infeasible. No problem-specific hints or human interaction.'
   spend_usd: 363 USD across the 1 resolution attempt(s) included in this repository, at GPT-6 Astra's standard rates;
     the paper reports over 220,000 USD of compute across all attempts on all 68 benchmark problems
   notes: 'The Lean development was written entirely by the AI system inside the benchmark harness. Humans (Thomas
