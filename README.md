@@ -1,10 +1,8 @@
+> **Note.** This entire repository was machine-written by AI assistants at the direction of Tom Adamczewski. The Lean proof itself was written by GPT-6 Astra, as described below.
+
 # Erdős problem #548 (Erdős–Sós conjecture): proof
 
 [![CI](https://github.com/tadamcz/erdos548/actions/workflows/ci.yml/badge.svg)](https://github.com/tadamcz/erdos548/actions/workflows/ci.yml)
-
-> **Note.** This README, the documentation in `Challenge.lean` and `formalization.yaml` were machine-written by Claude (Anthropic)
-> at the direction of Tom Adamczewski, from the FrontierMath Erdős paper, the benchmark files and the module documentation inside
-> the proof files, and reviewed by him. The Lean proofs themselves were written by GPT-6 Astra, as described below.
 
 Machine-checked proof of [Erdős problem #548](https://www.erdosproblems.com/548) in Lean 4 with Mathlib, found autonomously by a
 pre-release version of **GPT-6 Astra** (OpenAI) in the **FrontierMath Erdős** benchmark (Adamczewski and Bloom, 2026). The
