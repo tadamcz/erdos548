@@ -53,7 +53,7 @@ assistant, autonomously and under a fixed, disclosed budget ($300 and 72 hours o
 agent works in a network-isolated Docker container with a Lean 4 toolchain (v4.27.0) and Mathlib, SageMath and Python; its final
 `Spec.lean` is checked in a separate pristine container by Comparator against the trusted statement, permitting only `propext`,
 `Quot.sound` and `Classical.choice`. The benchmark, harness and statements are public at
-[epoch-research/LeanOpenProblems](https://github.com/epoch-research/LeanOpenProblems); the paper is in preparation. No human saw or steered the proof search.
+[epoch-research/LeanOpenProblems](https://github.com/epoch-research/LeanOpenProblems); the paper is [FrontierMath Erdős](https://epoch.ai/files/frontiermath-erdos.pdf). No human saw or steered the proof search.
 
 **Statement.** The problem had no statement in Formal Conjectures. The statement was produced by the benchmark authors' autoformalization pipeline and reviewed for faithfulness by Thomas F. Bloom; the file the model received is [`apn/data/erdos_autoformalized/Isolated/Erdos548.erdos_548.lean`](https://github.com/epoch-research/LeanOpenProblems/blob/77882c437ca1dfefab3b27fa00f1d29788100311/apn/data/erdos_autoformalized/Isolated/Erdos548.erdos_548.lean).
 
