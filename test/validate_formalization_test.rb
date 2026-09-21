@@ -227,15 +227,3 @@ class ValidateFormalizationTest < Minitest::Test
     assert_includes errors, "Usage:"
   end
 end
-
-class MetadataWorkflowRoutingTest < Minitest::Test
-  WORKFLOW = File.read(Pathname(__dir__).parent / ".github/workflows/ci.yml")
-  CONDITIONS = WORKFLOW.lines.map(&:strip).grep(/\Aif:/).freeze
-
-  def test_only_the_canonical_repository_uses_template_mode
-    assert_includes CONDITIONS,
-                    "if: github.repository == 'PalomarRegistry/PalomarTemplate'"
-    assert_includes CONDITIONS,
-                    "if: github.repository != 'PalomarRegistry/PalomarTemplate'"
-  end
-end

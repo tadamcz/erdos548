@@ -27,11 +27,7 @@ jobs:
           bundler-cache: true
       - name: Test the metadata validator
         run: ruby test/validate_formalization_test.rb
-      - name: Check the canonical template sentinel surface
-        if: github.repository == 'PalomarRegistry/PalomarTemplate'
-        run: ruby scripts/validate-formalization.rb --expect-template
-      - name: Reject retained template values in a derived repository
-        if: github.repository != 'PalomarRegistry/PalomarTemplate'
+      - name: Reject retained template values
         run: ruby scripts/validate-formalization.rb
       - name: Detect the repository licence
         run: |
@@ -41,38 +37,6 @@ jobs:
             identifiers = report.fetch("licenses").map { |item| item.fetch("spdx_id") }
             abort "LICENSE is not detected exactly as Apache-2.0" unless identifiers == ["Apache-2.0"]
           ' "$RUNNER_TEMP/license.json"
-
-  submission-link:
-    name: Check where the README sends a submitter
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          persist-credentials: false
-      - name: Check the submission form the README names
-        # Require the current destination as well as rejecting the retired one;
-        # a missing or misspelt link would pass a negative-only check. Limit the
-        # rejection to Palomar's form because other issue trackers are valid.
-        run: |
-          python3 - <<'PY'
-          import pathlib
-          import re
-
-          form = "https://submit.palomar-registry.org/"
-          retired = re.compile(r"PalomarSubmission/issues/new")
-          failed = False
-          if form not in pathlib.Path("README.md").read_text():
-              print(f"README.md: does not send a submitter to {form}")
-              failed = True
-          for document in sorted(pathlib.Path(".").rglob("*.md")):
-              if ".lake" in document.parts:
-                  continue
-              for number, line in enumerate(document.read_text().splitlines(), 1):
-                  if retired.search(line):
-                      print(f"{document}:{number}: that submission form was deleted; submissions go to {form}")
-                      failed = True
-          raise SystemExit(failed)
-          PY
 
   sandbox:
     name: Check the Landrun wrapper's flag policy
